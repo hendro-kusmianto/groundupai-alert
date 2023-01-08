@@ -1,0 +1,140 @@
+@font-face {
+  font-family: 'SourceSansPro';
+  font-style: normal;
+  src: local('SourceSansPro Light'), local('SourceSansPro-Light'),
+  url("./assets/fonts/SourceSansPro-Regular.ttf") format('truetype')
+}
+
+@font-face {
+  font-family: 'SourceSansPro';
+  font-style: normal;
+  font-weight: 600;
+  src: local('SourceSansPro Semibold'), local('SourceSansPro-Semibold'),
+  url("./assets/fonts/SourceSansPro-Regular.ttf") format('truetype')
+}
+
+@font-face {
+  font-family: 'SourceSansPro';
+  font-style: normal;
+  font-weight: 700;
+  src: local('SourceSansPro Bold'), local('SourceSansPro-Bold'),
+  url("./assets/fonts/SourceSansPro-Regular.ttf") format('truetype')
+}
+
+body {
+  margin: 0;
+  font-family: 'SourceSansPro', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.layout-wrapper {
+  background-color: #F8F8FF;
+  height: 100vh;
+  color: #5F6368;
+
+  .layout-topbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    height: 53px;
+    padding: 0 24px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.02), 0px 0px 2px rgba(0, 0, 0, 0.05), 0px 1px 4px rgba(0, 0, 0, 0.08);
+    z-index: 2;
+
+
+    > .left {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      gap: 16px;
+
+
+      > img {
+        padding-right: 29px;
+      }
+
+      > div {
+        text-transform: uppercase;
+        font-size: 13px;
+        height: 100%;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        width: 91px;
+        text-align: center;
+
+        > span {
+          width: 100%;
+        }
+
+        &.selected {
+          background-color: #F0F5FF;
+          border-bottom: 3px solid #3478FC;
+        }
+      }
+    }
+
+    > .right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+
+      > div {
+      }
+
+      > .divider {
+        border-left: 1px solid #5F6368;
+      }
+    }
+  }
+
+  .layout-content {
+    padding: 24px;
+    height: 100vh;
+  }
+}
+
+.card {
+  background-color: white;
+  height: 100vh;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.02), 0px 0px 2px rgba(0, 0, 0, 0.05), 0px 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.list-item {
+  height: 119px;
+  border: 1px solid currentColor;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #5F6368;
+
+  &.selected {
+    border: 1px solid #3478FC;
+  }
+
+  .machine {
+    color: #3478FC;
+    margin-top: 8px;
+
+  }
+}
+
+.p-component.p-listbox {
+  border: none;
+
+  .p-listbox-list {
+
+    .p-listbox-item {
+      &.p-highlight {
+        background: transparent;
+      }
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+}
