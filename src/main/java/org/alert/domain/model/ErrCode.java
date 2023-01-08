@@ -1,13 +1,12 @@
-package io.octagram.domain.model;
+package org.alert.domain.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
-@RequiredArgsConstructor
-@ToString
 public enum ErrCode {
     SERVER_ERROR("500", "Server Error"),
     SUCCESS("2000", "Sukses"),
@@ -37,9 +36,7 @@ public enum ErrCode {
 
     ERR_SERVICE_CLOSED("4021", "Service closed");
 
-    @NonNull
     private String code;
-    @NonNull
     private String message;
 
     public static ErrCode toError(String errCode) {

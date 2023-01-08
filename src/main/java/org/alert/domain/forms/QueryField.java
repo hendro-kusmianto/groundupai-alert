@@ -1,12 +1,11 @@
-package io.octagram.domain.model;
+package org.alert.domain.forms;
 
-import io.octagram.domain.enums.Op;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.alert.domain.enums.Op;
 
-//@Accessors(fluent = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -14,5 +13,7 @@ import lombok.ToString;
 public class QueryField {
     String field;
     Op op;
-    String value;
+    Object value;
+
+
 }

@@ -1,11 +1,10 @@
-package io.octagram.domain.dto;
+package org.alert.domain.model;
 
 import lombok.*;
 import lombok.experimental.Accessors;
 
 @Data
 @AllArgsConstructor
-@Builder
 @Setter
 @Getter
 @Accessors(chain = true)

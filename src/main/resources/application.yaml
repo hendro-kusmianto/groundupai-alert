@@ -12,11 +12,7 @@ server:
   shutdown: graceful
 spring:
   application:
-    name: api
-  security:
-    user:
-      name: admin
-      password: admin
+    name: alert
   jackson:
     default-property-inclusion: non_empty
     property-naming-strategy: SNAKE_CASE
@@ -27,25 +23,16 @@ spring:
     multipart:
       max-request-size: 100MB
       max-file-size: 100MB
-  main:
-    allow-circular-references: true
   data:
     mongodb:
-      database: octagram
+      database: alert
       field-naming-strategy: org.springframework.data.mapping.model.SnakeCaseFieldNamingStrategy
       auto-index-creation: true
+      uri: mongodb+srv://admin:admin@cluster0.nqrxeg9.mongodb.net/?retryWrites=true&w=majority
   webflux:
     format:
       date: dd/MM/yyyy
   mvc:
     format:
       date: dd/MM/yyyy
-management:
-  endpoint:
-    shutdown:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: health,info,shutdown
-debug: true
+#debug: true

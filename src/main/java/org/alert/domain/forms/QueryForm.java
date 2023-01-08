@@ -1,6 +1,5 @@
-package io.octagram.domain.form;
+package org.alert.domain.forms;
 
-import io.octagram.domain.model.QueryField;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -43,7 +42,6 @@ public class QueryForm {
             int length = split.length;
             String sortField = split[0];
             Sort.Direction sortOrder = length == 1 ? Sort.Direction.ASC : Sort.Direction.valueOf(split[1].toUpperCase());
-
             builder.sort(sortField).sortOrder(sortOrder);
         }
 

@@ -1,7 +1,7 @@
-package io.octagram.domain.exceptions;
+package org.alert.domain.exceptions;
 
-import io.octagram.domain.model.ErrCode;
-import io.octagram.domain.model.ErrDetail;
+import org.alert.domain.model.ErrCode;
+import org.alert.domain.model.ErrDetail;
 
 public class ForbiddenOperationException extends AppException {
 

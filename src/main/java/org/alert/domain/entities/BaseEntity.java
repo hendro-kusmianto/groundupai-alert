@@ -1,4 +1,4 @@
-package io.octagram.domain.entities;
+package org.alert.domain.entities;
 
 import lombok.Getter;
 import lombok.Setter;

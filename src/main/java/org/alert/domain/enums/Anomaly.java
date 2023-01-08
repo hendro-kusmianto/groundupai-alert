@@ -1,5 +1,5 @@
 package org.alert.domain.enums;
 
-public enum Op {
-    eq, like, gt, lt, isNull
+public enum Anomaly {
+    mild, moderate, severe
 }

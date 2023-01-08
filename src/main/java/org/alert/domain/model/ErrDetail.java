@@ -1,4 +1,4 @@
-package io.octagram.domain.model;
+package org.alert.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

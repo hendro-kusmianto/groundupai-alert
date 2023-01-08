@@ -1,4 +1,4 @@
-package io.octagram.utils;
+package org.alert.utils;
 
 public class OnBlank {
     String str;

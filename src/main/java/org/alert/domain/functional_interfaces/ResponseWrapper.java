@@ -1,6 +1,6 @@
-package io.octagram.domain.interfaces;
+package org.alert.domain.functional_interfaces;
 
-import io.octagram.domain.dto.ResponseEnvelope;
+import org.alert.domain.model.ResponseEnvelope;
 import reactor.core.publisher.Mono;
 
 @FunctionalInterface

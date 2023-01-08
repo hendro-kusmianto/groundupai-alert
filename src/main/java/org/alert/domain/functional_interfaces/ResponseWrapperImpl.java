@@ -1,4 +1,4 @@
-package io.octagram.domain.interfaces;
+package org.alert.domain.functional_interfaces;
 
 import reactor.core.publisher.Mono;
 

@@ -1,4 +1,4 @@
-package io.octagram.domain.exceptions;
+package org.alert.domain.exceptions;
 
 import lombok.NoArgsConstructor;
 

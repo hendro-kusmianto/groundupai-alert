@@ -1,5 +1,5 @@
-package io.octagram.domain.enums;
+package org.alert.domain.enums;
 
 public enum Op {
-    eq, like, gt, lt, isNull
+    eq, like, gt, lt, gte, lte, isNull
 }

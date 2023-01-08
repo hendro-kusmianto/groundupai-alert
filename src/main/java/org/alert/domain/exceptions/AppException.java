@@ -1,9 +1,9 @@
-package io.octagram.domain.exceptions;
+package org.alert.domain.exceptions;
 
-import io.octagram.domain.model.ErrCode;
-import io.octagram.domain.model.ErrDetail;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.alert.domain.model.ErrCode;
+import org.alert.domain.model.ErrDetail;
 
 import java.util.ArrayList;
 import java.util.List;

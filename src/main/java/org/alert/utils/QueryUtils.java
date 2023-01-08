@@ -1,14 +1,15 @@
-package io.octagram.utils;
+package org.alert.utils;
 
-import io.octagram.domain.enums.Op;
-import io.octagram.domain.exceptions.InvalidFieldException;
-import io.octagram.domain.form.QueryForm;
-import io.octagram.domain.model.QueryField;
+import org.alert.domain.enums.Op;
+import org.alert.domain.exceptions.InvalidFieldException;
+import org.alert.domain.forms.QueryField;
+import org.alert.domain.forms.QueryForm;
 import org.springframework.data.mongodb.core.query.Criteria;
 import reactor.core.Exceptions;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,12 +29,22 @@ public class QueryUtils {
         return Flux.fromIterable(map.keySet())
                 .filter(key -> !skipped.containsKey(key))
                 .filter(field -> map.get(field) != null && !map.get(field).isBlank())
-                .map(field -> {
-                    String parameterValue = map.get(field);
-                    String[] split = parameterValue.split("\\;", 2);
+                .map(parameterName -> {
+                    String parameterValue = map.get(parameterName);
+                    String[] split = parameterValue.split("\\;", 3);
                     int length = split.length;
-                    String op = length == 1 ? Op.eq.name() : split[0];
-                    String val = length == 1 ? split[0] : split[1];
+
+                    String field = switch (length){
+                        case 3 -> split[0];
+                        default -> parameterName;
+                    };
+                    String op = switch (length){
+                        case 2 -> split[0];
+                        case 3 -> split[1];
+                        default -> Op.eq.name();
+                    };
+
+                    String val = split[length - 1];
 
                     return new String[]{field, op, val};
                 })
@@ -62,26 +73,56 @@ public class QueryUtils {
     public static Criteria toCriteria(List<QueryField> filters) {
         Criteria criteria = new Criteria();
         if (filters != null && !filters.isEmpty()) {
+            List<Criteria> allCriteria = new ArrayList<>();
             filters.forEach(f -> {
                 String field = f.getField();
                 Op op = f.getOp();
-                String value = f.getValue();
+                Object value = f.getValue();
                 switch (op) {
                     case eq: {
-                        criteria.and(field).is(value);
+                        Criteria eq = new Criteria(field).is(value);
+                        allCriteria.add(eq);
                         break;
                     }
                     case like: {
-                        criteria.and(field).regex(value);
+                        Criteria like = new Criteria(field).regex(value.toString());
+                        allCriteria.add(like);
                         break;
                     }
                     case isNull: {
-                        criteria.and(field).isNull();
+                        Criteria isNull = new Criteria(field).isNull();
+                        allCriteria.add(isNull);
+                        break;
+                    }
+                    case gt: {
+                        Double n = Double.parseDouble(value+"");
+                        Criteria gt = new Criteria(field).gt(n);
+                        allCriteria.add(gt);
+                        break;
+                    }
+                    case gte: {
+                        Double n = Double.parseDouble(value+"");
+                        Criteria gte = new Criteria(field).gte(n);
+                        allCriteria.add(gte);
+                        break;
+                    }
+                    case lt: {
+                        Double n = Double.parseDouble(value+"");
+                        Criteria lt = new Criteria(field).lt(n);
+                        allCriteria.add(lt);
+                        break;
+                    }
+                    case lte: {
+                        Double n = Double.parseDouble(value+"");
+                        Criteria lte = new Criteria(field).lte(n);
+                        allCriteria.add(lte);
                         break;
                     }
                 }
 
             });
+
+            criteria.andOperator(allCriteria);
         }
 
         return criteria;

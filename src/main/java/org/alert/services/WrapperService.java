@@ -1,7 +1,11 @@
-package io.alert.service;
+package org.alert.services;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.alert.domain.exceptions.AppException;
+import org.alert.domain.exceptions.ForbiddenOperationException;
+import org.alert.domain.exceptions.InvalidFieldException;
+import org.alert.domain.exceptions.NonExistentEntityException;
 import org.alert.domain.functional_interfaces.ResponseWrapper;
 import org.alert.domain.model.ErrCode;
 import org.alert.domain.model.ErrDetail;
@@ -81,22 +85,22 @@ public class WrapperService {
 
     }
 
-    public Mono<Void> response(ServerWebExchange exchange, HttpStatus httpStatus, ResponseEnvelope envelope) {
+//    public Mono<Void> response(ServerWebExchange exchange, HttpStatus httpStatus, ResponseEnvelope envelope) {
+//
+//        return Mono.just(MarshallingUtils.marshalJsonSilently(envelope).getBytes(StandardCharsets.UTF_8))
+//                .flatMap(bytes -> {
+//                    ServerHttpResponse response = exchange.getResponse();
+//                    response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+//                    response.setStatusCode(httpStatus);
+//                    Mono<DataBuffer> dataBufferMono = Mono.just(response.bufferFactory().wrap(bytes));
+//                    return response.writeWith(dataBufferMono);
+//                })
+//                .then();
+//
+//    }
 
-        return Mono.just(MarshallingUtils.marshalJsonSilently(envelope).getBytes(StandardCharsets.UTF_8))
-                .flatMap(bytes -> {
-                    ServerHttpResponse response = exchange.getResponse();
-                    response.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-                    response.setStatusCode(httpStatus);
-                    Mono<DataBuffer> dataBufferMono = Mono.just(response.bufferFactory().wrap(bytes));
-                    return response.writeWith(dataBufferMono);
-                })
-                .then();
-
-    }
-
-    public Mono<Void> unAuthorized(ServerWebExchange exchange) {
-        return response(exchange, HttpStatus.UNAUTHORIZED, new ResponseEnvelope(ErrCode.ERR_BAD_CREDENTIAL));
-
-    }
+//    public Mono<Void> unAuthorized(ServerWebExchange exchange) {
+//        return response(exchange, HttpStatus.UNAUTHORIZED, new ResponseEnvelope(ErrCode.ERR_BAD_CREDENTIAL));
+//
+//    }
 }

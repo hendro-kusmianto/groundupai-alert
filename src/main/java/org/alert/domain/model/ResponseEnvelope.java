@@ -1,7 +1,5 @@
-package io.octagram.domain.dto;
+package org.alert.domain.model;
 
-import io.octagram.domain.model.ErrCode;
-import io.octagram.domain.model.ErrDetail;
 import lombok.Data;
 
 import java.util.ArrayList;

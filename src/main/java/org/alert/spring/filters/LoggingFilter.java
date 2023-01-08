@@ -1,7 +1,7 @@
-package io.octagram.spring.filters;
+package org.alert.spring.filters;
 
-import io.octagram.utils.Utils;
 import lombok.extern.slf4j.Slf4j;
+import org.alert.utils.Utils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
