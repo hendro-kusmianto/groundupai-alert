@@ -9,7 +9,7 @@ import {PageAlert} from "./features/alert/alert.page";
 
 function App() {
     return <>
-        <Title title={"Monitoring"}/>
+        <Title title={"Alert Monitoring"}/>
         <div className="layout-wrapper ">
             <Navbar/>
             <div className={'layout-content'}>
