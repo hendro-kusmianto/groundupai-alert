@@ -67,7 +67,6 @@ export const PageAlert = () => {
                                             container: '#wave-spectrogram-anomaly',
                                             colorMap: getColorMap(),
                                             noverlap: true,
-                                            labels: true,
                                             frequencyMax: 8000
                                         }}
                                     />
@@ -91,14 +90,14 @@ export const PageAlert = () => {
                                             progressColor: "#1f77b4",
                                             responsive: true,
                                             waveColor: "#1f77b4",
-                                            mediaControls: true
+                                            mediaControls: true,
                                         }}
                                         spectrogramOptions={{
                                             container: '#wave-spectrogram-normal',
                                             colorMap: getColorMap(),
                                             noverlap: true,
                                             labels: true,
-                                            frequencyMax: 8000
+                                            frequencyMax: 8000 / 2
                                         }}
                                     />
                                     <div id='wave-spectrogram-normal' style={{margin: '0 auto'}}/>
